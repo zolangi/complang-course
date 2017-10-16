@@ -1,0 +1,12 @@
+Write a C++ application that meets the following specifications.
+Use header files and a driver as appropriate.
+Hint: model your application on my code from the knights with file I.O example.
+You may copy and paste any code you choose from that source,
+including the tokenizer.
+
+A StockPrice has a month, day, and year (all ints), a stock name (string),
+an opening price (double), and a closing price(double).
+Write code that uses text file I/O to save StockPrices to files and
+read them from files.
+You may use hard coded data in the same way I do in the knights with
+file i/o example; there is no need to take user input for this exercise.
