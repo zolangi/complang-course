@@ -1,19 +1,14 @@
 //Paycheck.cpp
 
 #include "paycheck.h"
-#include <string>
+
 using namespace std;
 
-Paycheck::Paycheck(string employeeIDIn, string firstNameIn, string lastNameIn, int payAmountIn){
-  employeeID = employeeIDIn;
-  firstName = firstNameIn;
-  lastName = lastNameIn;
-  payAmount = payAmountIn;
-}
+Paycheck::Paycheck(string employeeIDIn, string firstNameIn, string lastNameIn, int payAmountIn):employeeID(employeeIDIn), firstName(firstNameIn), lastName(lastNameIn), payAmount(payAmountIn) {};
 
-string Paycheck::getEmployeeID() {return employeeID;}
-string Paycheck::getFirstName() {return firstName;}
-string Paycheck::getLastName() {return lastName;}
+string Paycheck::getEmployeeID() const {return employeeID;}
+string Paycheck::getFirstName() const {return firstName;}
+string Paycheck::getLastName() const {return lastName;}
 
 void Paycheck::setEmployeeId(string employeeID) {employeeID = employeeIDIn;}
 void Paycheck::setPayAmount(double payAmountIn) {payAmount = payAmountIn;}

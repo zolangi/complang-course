@@ -1,11 +1,14 @@
+#ifndef EMPLOYEE
+#define  EMPLOYEE
 
 #include <string>
 using namespace std;
 
 class Employee{
  public:
-  Employee();
+  Employee()= default;
   Employee(string employeeIDIn);
+  Employee(string employeeIDIn, string firstNameIn, string lastNameIn, double hourlyWageIn, int hoursWorkedIn);
 
   string getEmployeeID() const;
   string getFirstName() const;
@@ -27,4 +30,5 @@ class Employee{
   string lastName;
   double hourlyWage;
   int hoursWorked;
-}
+};
+#endif

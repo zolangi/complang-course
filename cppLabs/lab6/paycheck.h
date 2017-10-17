@@ -1,4 +1,6 @@
 //Paycheck.h
+#ifndef PAYCHECK
+#define  PAYCHECK
 
 #include <string>
 using namespace std;
@@ -6,7 +8,7 @@ using namespace std;
 class Paycheck{
 
   public:
-    Paycheck();
+    Paycheck()= default;
     Paycheck(string employeeIDIn, string firstNameIn, string lastNameIn, int payAmountIn);
 
     int getPayAmount() const;
@@ -23,4 +25,5 @@ class Paycheck{
     string firstName;
     string lastName;
     string employeeID;
-}
+};
+#endif
