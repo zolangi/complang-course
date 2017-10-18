@@ -1,7 +1,7 @@
 #ifndef EMPLOYEE
 #define  EMPLOYEE
 
-#include <string>
+#include <iostream>
 using namespace std;
 
 class Employee{
@@ -16,14 +16,15 @@ class Employee{
   double getHourlyWage() const;
   int getHoursWorked() const;
 
-  void setEmployeeId(string employeeIDIn);
+  void setEmployeeID(string employeeIDIn);
   void setFirstName(string firstNameIn);
   void setLastName(string lastNameIn);
   void setHourlyWage(double hourlyWageIn);
   void setHoursWorked(int hoursWorkedIn);
 
-  double calcPay(double hourlyWage, int hoursWorked);
-
+  double calcPay();
+  bool checkDigits(int idNum);
+  
  private:
   string employeeID;
   string firstName;

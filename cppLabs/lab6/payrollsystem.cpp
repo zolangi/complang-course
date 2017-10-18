@@ -5,26 +5,26 @@
 
 using namespace std;
 
-string PayrollSystem::getCompName(){return compName;}
-void PayrollSystem::setCompName(compNameIn){compName=compNameIn;}
+PayrollSystem::PayrollSystem(string compNameIn):compName(compNameIn){};
 
-void PayrollSystem::addCompany(string compName){
-  companies.push_back(Company(compName));
-};
+string PayrollSystem::getCompName() const{return compName;};
+
+vector<Employee> PayrollSystem::getEmployees() const{return employees;};
+
 
 void PayrollSystem::addEmployee(string employeeIDIn, string firstNameIn, string lastNameIn, double hourlyWageIn, int hoursWorkedIn){
-  string compName = "Ace Peat Moss Inc";
+  employees.push_back(Employee(employeeIDIn, firstNameIn, lastNameIn, hourlyWageIn, hoursWorkedIn));
+};
 
-  int compIndex = findCompany(compName);
-  if (compIndex==-1) {
-    cout << "Sorry, the company you entered does not exist." << endl;
-  }
-  else{
-      companies[compIndex].createEmployee(employeeIDIn, firstNameIn, lastNameIn, hourlyWageIn, hoursWorkedIn);
+void PayrollSystem::removeEmployee(string employeeID){
+  int emplIndx = findEmployee(employeeID);
+  if(emplIndx == -1){
+    cout << "Sorry, that employee does not exist." << endl;
+  } else{
+    employees.erase(employees.begin()+emplIndx);
   }
 };
 
-void PayrollSystem::removeEmployee(string employeeID);
 void PayrollSystem::recordHoursCP(string employeeID){
   int emplIndex = findEmployee(employeeID);
   if (emplIndex == -1) {
@@ -35,38 +35,41 @@ void PayrollSystem::recordHoursCP(string employeeID){
     cin >> hoursWorked;
     employees[emplIndex].setHoursWorked(hoursWorked);
   }
-
-  for (int i = 0; i < list.size(); i++) {
-			if (id == list.get(i).getiD()) {
-				list.get(i).setHour(hours);
-			}
-		}
 };
 
 void PayrollSystem::issuePaychecks(){
-  
+  double payAmount;
+  string employeeID;
+  string firstName;
+  string lastName;
+
+  for(int index = 0; index < (int) employees.size(); index++){
+    payAmount = employees[index].calcPay();
+    employeeID = employees[index].getEmployeeID();
+    firstName = employees[index].getFirstName();
+    lastName = employees[index].getLastName();
+    Paycheck pc = Paycheck(employeeID, firstName, lastName, payAmount);
+    pc.toString();
+
+    pc.setPayAmount(0);
+  }
+
 }
 
 void PayrollSystem::showEmployees(){
   string ret;
-  for(Company c:: companies){
-    cout << "Payroll for " << c.getCompName() << " :"<< endl;
-    /*for(Employee e: c.getEmployees()){
-
-    }*/
+  cout << "Payroll for " << compName << ":"<< endl;
+  
+  for(Employee e: employees){
+    cout << "Employee #" << e.getEmployeeID() << endl
+	 << "\t" << e.getFirstName() << " " << e.getLastName() << endl
+	 << "\tSalary: $" << e.getHourlyWage() << endl;
   }
 };
 
-int PayrollSystem::findCompany(string key){
-  for(int i = 0; i < (int) companies.size; i++){
-    if (companies[i].getCompName() == key) {return i;}
-  }
-  return -1;
-}
-
 int PayrollSystem::findEmployee(string key){
-  for(int i = 0; i < (int) employees.size; i++){
-    if (employees[i].getEmployeeID() == key) {return i;}
+  for(int i = 0; i < (int) employees.size(); i++){
+    if (employees[i].getEmployeeID()  == key) {return i;}
   }
   return -1;
 }

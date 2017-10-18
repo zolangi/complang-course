@@ -2,28 +2,28 @@
 #ifndef PAYCHECK
 #define  PAYCHECK
 
-#include <string>
+#include <iostream>
 using namespace std;
 
 class Paycheck{
 
   public:
     Paycheck()= default;
-    Paycheck(string employeeIDIn, string firstNameIn, string lastNameIn, int payAmountIn);
+    Paycheck(string employeeIDIn, string firstNameIn, string lastNameIn, double payAmountIn);
 
-    int getPayAmount() const;
+    string getEmployeeID() const;
     string getFirstName() const;
     string getLastName() const;
-    string getEmployeeID() const;
+    double getPayAmount() const;
 
     void setPayAmount(double payAmountIn);
     void setEmployeeId(string employeeIDIn);
 
     void toString();
   private:
-    double payAmount;
+    string employeeID;
     string firstName;
     string lastName;
-    string employeeID;
+    double payAmount;
 };
 #endif
