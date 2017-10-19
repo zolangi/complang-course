@@ -21,6 +21,6 @@ bool Blob::operator==(const Blob &other){
 //adds other area to curr area, sets other area to 0
 Blob Blob::operator+=(const Blob &other){
   double addAreas = other.getArea() + area;
-  other.setArea(0);
+  &other.setArea(0.0);
   return Blob(addAreas);
 }
