@@ -1,39 +1,37 @@
 #ifndef LINKED_LIST
 #define LINKED_LIST
 
-#include "monster_attack.h"
-
 typedef struct node
 {
-    struct monster_attack* data;
+    int data;
     struct node* next;
 } node;
-
-
+ 
+ 
 /*
     create a new node
     initialize the data and next field
-
+ 
     return the newly created node
 */
-node* create(struct monster_attack** data,node* next);
-
+node* create(int data,node* next);
+ 
 /*
     add a new node at the beginning of the list
 */
-node* prepend(node* head,struct monster_attack* data);
+node* prepend(node* head,int data);
 /*
     add a new node at the end of the list
 */
-node* append(node* head, struct monster_attack* data);
+node* append(node* head, int data);
 /*
     insert a new node after the prev node
 */
-node* insert_after(node *head, struct monster_attack* data, node* prev);
+node* insert_after(node *head, int data, node* prev);
 /*
     insert a new node before the nxt node
 */
-node* insert_before(node *head, struct monster_attack* data, node* nxt);
+node* insert_before(node *head, int data, node* nxt);
 /*
     traverse the linked list
 */
@@ -54,7 +52,7 @@ node* remove_any(node* head,node* nd);
     display a node
 */
 void display(node* n);
-node* search(node* head,struct monster_attack data);
+node* search(node* head,int data);
 
 /*
     remove all element of the list
@@ -68,7 +66,7 @@ int count(node *head);
     sort the linked list using insertion sort
 */
 node* insertion_sort(node* head);
-
+ 
 /*
     reverse the linked list
 */

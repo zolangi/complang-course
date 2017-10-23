@@ -1,15 +1,17 @@
 // from zentut.com, heavily adapted
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "linked_list.h"
+#include "linked_list.h" 
 
+ 
 /*
     create a new node
     initialize the data and next field
-
+ 
     return the newly created node
 */
-node* create(struct monster_attack* data,node* next)
+node* create(int data,node* next)
 {
     node* new_node = (node*)malloc(sizeof(node));
     if(new_node == NULL)
@@ -17,22 +19,26 @@ node* create(struct monster_attack* data,node* next)
         printf("Error creating a new node.\n");
         exit(0);
     }
-    new_node->data = *data;
+    new_node->data = data;
     new_node->next = next;
-
+ 
     return new_node;
 }
-
-/* add a new node at the beginning of the list */
-node* prepend(node* head,struct monster_attack* data)
+ 
+/*
+    add a new node at the beginning of the list
+*/
+node* prepend(node* head,int data)
 {
     node* new_node = create(data,head);
     head = new_node;
     return head;
 }
-
-/* add a new node at the end of the list */
-node* append(node* head, struct monster_attack* data)
+ 
+/*
+    add a new node at the end of the list
+*/
+node* append(node* head, int data)
 {
 	if(head == NULL) head = create(data, head);
 	else {
@@ -40,16 +46,18 @@ node* append(node* head, struct monster_attack* data)
 		node *cursor = head;
 		while(cursor->next != NULL)
 			cursor = cursor->next;
-
+	
 		/* create a new node */
 		node* new_node =  create(data,NULL);
 		cursor->next = new_node;
 	}
     return head;
 }
-
-/* insert a new node after the prev node */
-node* insert_after(node *head, struct monster_attack*  data, node* prev)
+ 
+/*
+    insert a new node after the prev node
+*/
+node* insert_after(node *head, int data, node* prev)
 {
     if(head == NULL || prev == NULL)
         return NULL;
@@ -57,10 +65,10 @@ node* insert_after(node *head, struct monster_attack*  data, node* prev)
     node *cursor = head;
     while(cursor != prev)
         cursor = cursor->next;
-
+ 
     if(cursor != NULL)
     {
-        node* new_node = create(&data,cursor->next);
+        node* new_node = create(data,cursor->next);
         cursor->next = new_node;
         return head;
     }
@@ -69,19 +77,21 @@ node* insert_after(node *head, struct monster_attack*  data, node* prev)
         return NULL;
     }
 }
-
-/* insert a new node before the nxt node */
-node* insert_before(node *head, struct monster_attack* data, node* nxt)
+ 
+/*
+    insert a new node before the nxt node
+*/
+node* insert_before(node *head, int data, node* nxt)
 {
     if(nxt == NULL || head == NULL)
         return NULL;
-
+ 
     if(head == nxt)
     {
-        head = prepend(head,&data);
+        head = prepend(head,data);
         return head;
     }
-
+ 
     /* find the prev node, starting from the first node*/
     node *cursor = head;
     while(cursor != NULL)
@@ -90,10 +100,10 @@ node* insert_before(node *head, struct monster_attack* data, node* nxt)
             break;
         cursor = cursor->next;
     }
-
+ 
     if(cursor != NULL)
     {
-        node* new_node = create(&data,cursor->next);
+        node* new_node = create(data,cursor->next);
         cursor->next = new_node;
         return head;
     }
@@ -102,8 +112,10 @@ node* insert_before(node *head, struct monster_attack* data, node* nxt)
         return NULL;
     }
 }
-
-/* traverse the linked list */
+ 
+/*
+    traverse the linked list
+*/
 void traverse(node* head)
 {
     node* cursor = head;
@@ -114,7 +126,9 @@ void traverse(node* head)
     }
     printf("\n");
 }
-/* remove node from the front of list */
+/*
+    remove node from the front of list
+*/
 node* remove_front(node* head)
 {
     if(head == NULL)
@@ -128,13 +142,15 @@ node* remove_front(node* head)
     free(front);
     return head;
 }
-
-/* remove node from the back of the list */
+ 
+/*
+    remove node from the back of the list
+*/
 node* remove_back(node* head)
 {
     if(head == NULL)
         return NULL;
-
+ 
     node *cursor = head;
     node *back = NULL;
     while(cursor->next != NULL)
@@ -142,20 +158,22 @@ node* remove_back(node* head)
         back = cursor;
         cursor = cursor->next;
     }
-
+ 
     if(back != NULL)
         back->next = NULL;
-
+ 
     /* if this is the last node in the list*/
     if(cursor == head)
         head = NULL;
-
+ 
     free(cursor);
-
+ 
     return head;
 }
-
-/* remove a node from the list */
+ 
+/*
+    remove a node from the list
+*/
 node* remove_any(node* head,node* nd)
 {
     if(nd == NULL)
@@ -163,11 +181,11 @@ node* remove_any(node* head,node* nd)
     /* if the node is the first node */
     if(nd == head)
         return remove_front(head);
-
+ 
     /* if the node is the last node */
     if(nd->next == NULL)
         return remove_back(head);
-
+ 
     /* if the node is in the middle */
     node* cursor = head;
     while(cursor != NULL)
@@ -176,7 +194,7 @@ node* remove_any(node* head,node* nd)
             break;
         cursor = cursor->next;
     }
-
+ 
     if(cursor != NULL)
     {
         node* tmp = cursor->next;
@@ -185,44 +203,43 @@ node* remove_any(node* head,node* nd)
         free(tmp);
     }
     return head;
-
+ 
 }
-/* display a node */
+/*
+    display a node
+*/
 void display(node* n)
 {
-    if(n != NULL){
-        printf("Attack ID #%d\n", n->data->attack_id);
-        printf("Monster Name: %s\n", n->data->monster_name);
-        printf("Monster Location: %s\n", n->data->monster_loc);
-        printf("This monster has a total of %d victim(s).\n", n->data->victim_num );
-      }
+    if(n != NULL)
+        printf("%d ", n->data);
 }
-
+ 
 /*
     Search for a specific node with input data
-
+ 
     return the first matched node that stores the input data,
     otherwise return NULL
-
-    //Possible Error(s): Accessing the data.attack_id, Passing in the data
 */
-node* search(node* head, struct monster_attack data)
+node* search(node* head,int data)
 {
+ 
     node *cursor = head;
     while(cursor!=NULL)
     {
-        if(cursor->data->attack_id == data.attack_id)
+        if(cursor->data == data)
             return cursor;
         cursor = cursor->next;
     }
     return NULL;
 }
-
-/* remove all element of the list */
+ 
+/*
+    remove all element of the list
+*/
 void clear(node *head)
 {
     node *cursor, *tmp;
-
+ 
     if(head != NULL)
     {
         cursor = head->next;
@@ -235,7 +252,9 @@ void clear(node *head)
         }
     }
 }
-/* return the number of elements in the list */
+/*
+    return the number of elements in the list
+*/
 int count(node *head)
 {
     node *cursor = head;
@@ -247,14 +266,16 @@ int count(node *head)
     }
     return c;
 }
-/* sort the linked list using insertion sort */
+/*
+    sort the linked list using insertion sort
+*/
 node* insertion_sort(node* head)
 {
     node *x, *y, *e;
-
+ 
     x = head;
     head = NULL;
-
+ 
     while(x != NULL)
     {
         e = x;
@@ -285,8 +306,10 @@ node* insertion_sort(node* head)
     }
     return head;
 }
-
-/* reverse the linked list */
+ 
+/*
+    reverse the linked list
+*/
 node* reverse(node* head)
 {
     node* prev    = NULL;
