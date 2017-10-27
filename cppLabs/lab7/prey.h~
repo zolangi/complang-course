@@ -1,0 +1,13 @@
+//prey .h file
+
+#include <iostream>
+
+using namespace std;
+
+class Prey : public Animal{
+ public: 
+  Prey(string nameIn);
+  void call();
+ private:
+  string name;
+}
