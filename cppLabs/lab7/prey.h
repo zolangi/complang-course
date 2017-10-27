@@ -10,12 +10,9 @@ using namespace std;
 
 class Prey : public Animal{
  public: 
-  Prey(string nameIn);
+  Prey(string nameIn, double weighIn);
+  Prey(string name);
   virtual void flee() = 0;
-  
- private:
-  string name;
-  double weigh;
 };
 
 #endif

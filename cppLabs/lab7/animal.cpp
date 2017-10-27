@@ -4,9 +4,8 @@
 
 using namespace std;
 
-
-
 Animal::Animal(string nameIn, double weighIn): name(nameIn), weigh(weighIn) {};
+Animal::Animal(string nameIn): name(nameIn) {};
 
 string Animal::getName() const{return name;};
 double Animal::getWeigh() const{return weigh;};

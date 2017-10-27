@@ -6,4 +6,4 @@
 using namespace std;
 
 Prey::Prey(string nameIn, double weighIn): Animal(nameIn, weighIn) {};
-Prey::Prey(string nameIn): Animal(nameIn) {};
+

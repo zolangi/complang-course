@@ -9,7 +9,8 @@ using namespace std;
 class Animal{
  public:
   Animal(string nameIn, double weighIn);
-  
+  Animal(string nameIn);
+
   string getName() const;
   double getWeigh() const;
 

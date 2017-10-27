@@ -1,0 +1,10 @@
+#include <iostream>
+#include "prey.h"
+
+using namespace std;
+
+class Bird: public Prey {
+public:
+  Bird(string nameIn, double weighIn): Prey(nameIn, weighIn){};
+  void flee(){ cout << nameIn << " flies away!" << endl;};
+};
