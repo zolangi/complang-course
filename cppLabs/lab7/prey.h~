@@ -7,7 +7,9 @@ using namespace std;
 class Prey : public Animal{
  public: 
   Prey(string nameIn);
-  void call();
+  virtual void flee() = 0;
+  
  private:
   string name;
+  double weigh;
 }

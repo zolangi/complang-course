@@ -1,5 +1,9 @@
 //prey .h file
 
+#ifndef PREY
+#define PREY
+
+#include "animal.h"
 #include <iostream>
 
 using namespace std;
@@ -12,4 +16,6 @@ class Prey : public Animal{
  private:
   string name;
   double weigh;
-}
+};
+
+#endif

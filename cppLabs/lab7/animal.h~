@@ -17,6 +17,7 @@ class Animal{
   
   void setName(string nameIn);
   void setWeigh(double doubleIn);
+
   void eat(double foodweigh);
  private:
   string name;
