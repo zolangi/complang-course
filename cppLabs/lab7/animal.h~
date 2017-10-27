@@ -22,5 +22,5 @@ class Animal{
  private:
   string name;
   double weigh;
-}
+};
 #endif
