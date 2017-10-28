@@ -11,7 +11,10 @@ using namespace std;
 class Prey : public Animal{
  public: 
   Prey(string nameIn, double weighIn);
+  Prey(string name);
   virtual void flee() = 0;
+  
+  void getName() const;
 };
 
 #endif

@@ -14,8 +14,6 @@ class Predator : public Animal {
  public:
   Predator(string nameIn, double weighIn);
   virtual void predate(Prey prey) = 0;
-  
-  string getName() const;
 };
 
 #endif

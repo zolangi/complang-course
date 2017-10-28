@@ -9,7 +9,8 @@ using namespace std;
 class Bird : public Prey {
  public:
   Bird(string nameIn);
-  void flee()
+  void flee();
+  void call();
 };
 
 #endif

@@ -13,6 +13,8 @@ class Prey : public Animal{
   Prey(string nameIn, double weighIn);
   Prey(string name);
   virtual void flee() = 0;
+  
+  string getName() const;
 };
 
 #endif

@@ -1,10 +1,7 @@
-#include <iostream>
-#include "prey.h"
-
+#include "bird.h"
 using namespace std;
 
-class Bird: public Prey {
-public:
-  Bird(string nameIn, double weighIn): Prey(nameIn, weighIn){};
-  void flee(){ cout << nameIn << " flies away!" << endl;};
-};
+Bird::Bird(string nameIn):Prey(nameIn) {};
+
+Bird::flee(){cout << Prey::getName() << " flies away!" << endl;};
+Bird::call(){cour << Prey::getName() << ", says \'Tweet\'" << endl;};
