@@ -15,7 +15,7 @@ class Animal{
   double getWeigh() const;
 
   virtual void call();
-  //  virtual ostream &operator<<(ostream &output) const;
+  virtual ostream &operator<<(ostream &output) const;
   friend ostream &operator<<(ostream &output, const Animal &ani);
   
   void setName(string nameIn);

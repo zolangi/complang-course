@@ -1,7 +1,8 @@
 #include "bird.h"
 using namespace std;
 
-Bird::Bird(string nameIn):Prey(nameIn) {};
+Bird::Bird(string nameIn, double weighIn):Prey(nameIn, weighIn) {};
 
-Bird::flee(){cout << Prey::getName() << " flies away!" << endl;};
-Bird::call(){cout << Prey::getName() << ", says \'Tweet\'" << endl;};
+void Bird::flee(){cout << getName() << " flies away!" << endl;};
+void Bird::call(){cout << getName() << ", says \'Tweet\'" << endl;};
+

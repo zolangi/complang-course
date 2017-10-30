@@ -8,7 +8,7 @@ using namespace std;
 
 class Mouse : public Prey {
  public:
-  Mouse(string nameIn);
+  Mouse(string nameIn, double weighIn);
   void flee();
   void call();
 };
