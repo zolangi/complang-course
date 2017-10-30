@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 #include "bird.h"
 #include "mouse.h"
 #include "cat.h"
@@ -9,6 +11,7 @@ using namespace std;
 int main(){
   vector <Prey*> p;
   Cat *c = new Cat("Fifi", 628.5);
+  cout << *c;
   
   c->call();
   
@@ -27,14 +30,18 @@ int main(){
   p.push_back(m2);
 
   srand(time(NULL));// seed number from system clock
-  //  f = (double)rand() / RAND_MAX;//rand() generates an int 
-  
- 
-  
-  
+  for(Prey *prey: p){
+    double f = (double)rand() / RAND_MAX;//rand() generates an int 
+    cout << "Random number b/w 0-1:\t" << f << endl;
+    prey->call();
+    
+    if(f < 0.5 )
+      c->predate(prey);
+    else
+      prey->flee();
+  }
 
-  //  creates a Cat on the heap and calls its overloaded << operator and its call function
-  //    iterates through the vector. For each Prey animal, calls the Prey's call() function, generates a random number between 0 and 1, and, if the number is less than .5, calls the Cat's predate() method with the prey as parameter, otherwise calls the Prey's flee() method.
+  cout << c->getName() <<"\'s Final weight is " << c->getWeigh() << "grams" <<endl;
   return 0;
 }
 

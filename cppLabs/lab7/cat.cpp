@@ -8,7 +8,7 @@ void Cat::call(){
 }
 
 ostream &operator<<(ostream &output, const Cat &cat){
-  output << cat.getName() << "\t Animal Weight: " << cat.getWeigh() << endl;
+  output << cat.getName() << " is a cat weighing " << cat.getWeigh() <<"grams"<< endl;
   return output;
 };
 //might need to change pointer to prey here to Prey &prey

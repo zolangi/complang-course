@@ -7,6 +7,7 @@
 
 using namespace std;
 class Animal{
+  friend ostream &operator<<(ostream &output, const Animal &ani);
  public:
   Animal(string nameIn, double weighIn);
   Animal(string nameIn);
@@ -16,7 +17,6 @@ class Animal{
 
   virtual void call();
   //  virtual ostream &operator<<(ostream &output) const;
-  friend ostream &operator<<(ostream &output, const Animal &ani);
   
   void setName(string nameIn);
   void setWeigh(double doubleIn);

@@ -7,10 +7,11 @@
 using namespace std;
 
 class Cat : public Predator{
+  friend ostream &operator<<(ostream &output, const Cat &cat);
  public:
   Cat(string nameIn, double weighIn);
   void call();
-  friend ostream &operator<<(ostream &output, const Cat &cat);
+
   void predate(Prey *prey);
 };
 
