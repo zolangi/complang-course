@@ -4,11 +4,6 @@
 #include <iostream>
 using namespace std;
 
-class FamilyTree{
- public:
-  void printAllNodes(FamilyTree *tree);
- private:
-  string familyName;
-};
+struct 
 
 #endif
