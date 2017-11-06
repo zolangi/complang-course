@@ -6,7 +6,7 @@ using namespace std;
 
 class Person{
  public:
-  Person(int monthIn, int dayIn, int yearIn, string firstNameIn, string lastNameIn, char genderIn);
+  Person(string firstNameIn, string lastNameIn, int yearIn, int monthIn, int dayIn, char genderIn);
 
   int getMonth() const;
   int getDay() const;

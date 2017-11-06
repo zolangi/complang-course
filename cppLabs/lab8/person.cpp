@@ -1,7 +1,7 @@
 #include "person.h"
 using namespace std;
 
-Person::Person(int monthIn, int dayIn, int yearIn, string firstNameIn, string lastNameIn, char genderIn):month(monthIn), day(dayIn), year(yearIn), firstName(firstNameIn), lastName(lastNameIn), gender(genderIn){};
+Person::Person(string firstNameIn, string lastNameIn, int yearIn, int monthIn, int dayIn, char genderIn): firstName(firstNameIn), lastName(lastNameIn), year(yearIn), month(monthIn), day(dayIn), gender(genderIn){};
 
 int Person::getMonth() const {return month;};
 int Person::getDay() const{return day;};
