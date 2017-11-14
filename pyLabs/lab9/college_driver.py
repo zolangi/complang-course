@@ -21,15 +21,19 @@ def main():
     uni.add_student(9042, 'James Franco')
     uni.add_student(3245, 'Dave Franco')
 
-    #Show students enrolled
-    uni.get_students()
-
     #Find a student by student_id, find a course by course_id, and enroll in the course
     uni.enroll_student(3142, 4576) #French 101 - James Dean
+    uni.enroll_student(2314, 4576) #Sociology 101 - James Dean
+    
     uni.enroll_student(1234, 9042) #English 101 - James Franco
-    uni.enroll_student(3467, 3245) #Math 101 - Dave Franco
+    uni.enroll_student(3467, 9042) #Math 101 - James Franco
+    
+    uni.enroll_student(1234, 3245) #English 101 - Dave Franco
+    uni.enroll_student(3142, 3245) #French 101 - Dave Franco
+    
     uni.enroll_student(2314, 7783) #Sociology 101 - Johnny Depp
-
+    uni.enroll_student(3467, 7783) #Math 101 - Johnny Depp
+    
     #Show students and each of their course schedule's
     uni.get_students()
     

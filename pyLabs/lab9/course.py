@@ -23,6 +23,6 @@ class Course:
         # return curr + '\n'
 
     def __str__(self):
-        return 'Course #' + str(self._courseNum) + ' Course Name: ' + str(self._name)
+        return 'Course #' + str(self._courseNum) + ': ' + str(self._name)
 
     
