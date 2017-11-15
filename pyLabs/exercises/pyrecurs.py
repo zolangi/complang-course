@@ -3,40 +3,45 @@ import sys
 def main():
     data = input('Enter a string: ')
     attrition(data)
-    letter = data[:-1]
-    print(letter)
-    
- #   print(reverse(data))
-
+    if(ispalindrom(data)) == False:
+        print('\nThe string is NOT a Palindrome')
+    else:
+        print('\nThe string IS a Palindrome')
+        
 def attrition(data):
-    print(data)
     if(len(data)) == 0:
         return
     else:
        attrition(data[1:])
 
-#def reverse(data):
-#    x = ""
-#    if len(data) == 0:
-#        return x
-#    else:
-#        print("reverse", str(reverse(data[:-1])))
-#        return x + str(reverse(data[:-1]))
-    
+def reverse(data):
+    if len(data) == 0:
+        return data
+    else:
+        return reverse(data[1:]) + data[0]
+
 def count(data):
     if(len(data)) == 0:
         return 0
     else:
-       return 1+count(data[1:])
+       return 1 + count(data[1:])
 
 def ispalindrom(data):
     if(data.isalpha()):
-        data.lower()
+        data = data.lower()
     else:
-        data.strip(',.\'').lower()
+        data = data.strip(',.\'\"\(\)?!&').lower()
+
     length = count(data)
+    datarev = reverse(data)
+    
     if(length) <= 1:
-        return true
+        return True
+    elif( data[0] != datarev[0]):
+        return False
+    else:
+        ispalindrom(data[1:-1])
+        
     
 if __name__ =="__main__":
     sys.exit(main())
