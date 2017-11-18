@@ -3,6 +3,8 @@
 class WordList: # design this class so that you only sort the list once after it is read in, NOT in contains()
     def __init__(self, word):
         self._word = word
+
+#    def read_file(self, filename):
         
     def get_word(self):
         return self._word
