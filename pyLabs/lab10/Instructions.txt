@@ -20,10 +20,10 @@ The output does not contain, for example, 'ro emnemyo', or any other anagrams th
 
 Use the file wordsEn.txt, which is linked from the course web page, as the source of the list of valid English words. Do *not* copy and paste from the file, write code to read it in. Use an iterator to read one line at a time. Each line of the file contains one word. Strip any whitespace from each line and make sure you do not add any newlines to the word list (the total number of words should be about 109,000).
 
-Here is pseudocode for generating anagrams recursively.  There are much better ways to generate anagrams, but do it this way:
+Here is pseudocode for generating anagrams recursively. There are much better ways to generate anagrams, but do it this way:
 
 if text.length == 1
-            return {letters}          # Set containing one string.  When created, the list will consist of one string with one letter, but it is a set of strings, not a set of chars.
+    return {letters} # Set containing one string. When created, the list will consist of one string with one letter, but it is a set of strings, not a set of chars.
 else
             ret = set()
             for each letter in the string
@@ -36,6 +36,6 @@ For example, you would anagramize the string 'the' by anagramizing 'he', 'te', a
 
 This algorithm is O(n!), so keep the input phrases short. 
 
-Note that this algorithm is not fully recursive; it does contain a loop.  If you finish this lab and want an additional challenge, you can develop a fully recursive solution; expect it to be slow.  If you have already done this lab because you are in my Senior Design group, develop a solution that generates anagrams containing each possible number of blanks (from zero to one less than the number of letters in the phrase); this will also be slow.
+Note that this algorithm is not fully recursive; it does contain a loop.
 
 Use a simple driver script, an Anagramizer class, and a WordList class.  WordList will need a contains() method, which determines whether a particular string is a valid word.  This method should use binary, not linear, search (lists are implemented in CPython with arrays of pointers, so binary search of a list is O(log n)).  Design the class so that you only sort the list *once*, after it is read in, not in the contains() method, which will be called many times.  You must code the binary search yourself, but you may use Python's list sort() function rather than coding the sort yourself.

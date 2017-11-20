@@ -4,7 +4,10 @@ class WordList: # design this class so that you only sort the list once after it
     def __init__(self, word):
         self._word = word
 
-#    def read_file(self, filename):
+    def read_file(self, filename):
+        my_file = open(filename, 'r')
+        for line in my_file:
+	print(line)
         
     def get_word(self):
         return self._word
