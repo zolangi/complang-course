@@ -5,7 +5,7 @@ from anagram import Anagramizer
 
 def main():
     a = Anagramizer()
-    a.anagram('more')
+    a.anagram('more money')
     a.print_anagrams()
     
 if __name__ == "__main__":
