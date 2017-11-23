@@ -4,9 +4,9 @@ import sys
 from anagram import Anagramizer
 
 def main():
-    anagram = Anagramizer()
-    
-    print(anagram, '\n')
+    a = Anagramizer()
+    a.anagram('more')
+    a.print_anagrams()
     
 if __name__ == "__main__":
     sys.exit(main())
