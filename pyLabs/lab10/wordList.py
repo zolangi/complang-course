@@ -10,7 +10,7 @@ class WordList:
         dictionary = []
         my_file = open(filename, 'r')
         for line in my_file:
-            line.strip(' \n')
+            line = line.strip('\n')
             dictionary.append( line)
         return dictionary
         
@@ -25,28 +25,36 @@ class WordList:
             return wordList
         
     def contains(self, word):
+        validWords = []
         wordList= self.sortlist(word)
         dictionary = self.read_file('wordsEn.txt')
-        for words in wordList:
-            if self.binary_search(dictionary, words) != -1:
-                return True
-            else:
-                return False
-                
+
+        for word in wordList:
+            if(self.binary_search(dictionary, word)) == True:
+                validWords.append(word.strip(' '))
+    
+        temp_list = []
+        for word in validWords:
+            if word not in temp_list:
+                temp_list.append(word)
+
+        temp = set(temp_list)
+        return temp
+            
             
     def binary_search(self, dictionary, searchWord):
         start = 0
         end = len(dictionary)-1
         while start <= end:
             mid = math.floor((start+end)/2)
-            if dictionary[mid] > searchWord:
+            middle = dictionary[mid]
+            if middle > searchWord:
                 end = mid - 1
-            elif dictionary[mid] < searchWord:
+            elif middle == searchWord:
+                return True
+            elif middle < searchWord:
                 start = mid + 1
-            elif dictionary[mid] == searchWord:
-                return midpoint
-            else:
-                return -1
+            
 
                 
             

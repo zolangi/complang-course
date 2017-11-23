@@ -1,25 +1,25 @@
+
 # Anagramizer Class
 from wordList import WordList
 
 class Anagramizer:
     def __init__(self):
-        self._words = set()
+        self._letters = set()
         
     def anagram(self, word):
         if len(word) == 1:
-            self._words.add(word)
-            return self._words
+            return self._letters
         else:
-            ret = set()
             for letter in word:
-                self.anagram(word[1:])
-                ret.add(word[0] + word)
-            return ret
+                c = word.index(letter)
+                self.anagram(word[:c] + word[c+1:])
+                self._letters.add(letter + (word[:c] +word[c+1:]) )
+            return self._letters
 
     def print_anagrams(self):
         w = WordList()
-        for word in self._words:
-            if w.contains(word) == True:
-                print(word)
-            else:
-                print('The word entered is invalid')
+        for word in self._letters:
+            for validWord in w.contains(word):
+                print(validWord)
+            # else:
+            #     print('The word entered is invalid')
