@@ -1,0 +1,77 @@
+Programming Problem, 50 points
+
+Write a Python application that tells the story of a vampire's path of destruction.  Most of the classes below will need __init__ and __str__ methods.  Add anything else you need.
+
+Write your code in one file and paste the full contents in the window below.
+
+Coffin
+
+This is the vampire's residence.  It has a depth, the number of meters below ground at which it is located.
+
+Vampire
+
+This class has a name, capacity (number of ccs of blood the vampire can safely consume), and a Coffin.  It has an arise() method, which prints out a message describing what happens when the vampire leaves his coffin to search for victims.  It's feast(v) method shows what happens when the vampire attacks a victim; the vampire consumes the victim's blood.  Feast() must also show the total amount of blood the vampire has consumed so far from all victims.  If the total amount of blood the vampire has consumed exceeds the vampire's capacity, the vampire explodes and dies.   The is_alive() method returns a boolean, which indicates whether the vampire is alive.
+
+Victim
+
+This class has a name, an amount of blood in ccs, and an is_alive() method.  It also has a succumb() method, which prints a message showing that the victim has died, sets the victim's blood variable to 0, and returns the amount of blood the victim had before s/he died.  is_alive() must subsequently return False.
+
+HorrorStory
+
+This class contains a reference to a Vampire, the name of the city where the story occurs, a list of victims, and all the methods the driver script will need.  These include a method to create the Vampire, one to create a Victim and add him or her to the list, and one to tell the story.  The create_vampire and add_victim methods will need to take the arguments that will be used by the __init__methods in Vampire and Victim; they must not take Victims or Vampires as parameters.  These methods also print messages describing what they have done.  The story method begins by printing a message announcing the arrival of the vampire in the city.  It contains a nested loop in which, as long as the vampire and at least one victim are alive, the vampire attacks each surviving victim.  Make sure the vampire never attacks if he is dead and that the vampire never attacks a victim who is already dead.  The carnage ends when either the vampire is dead or there are no surviving victims.  Print a message indicating which of these is the case.
+
+Driver
+
+The driver can be a top-level script; it does not need to be a class method.  It must call *only* methods in HorrorStory, not any methods, including __init__, in Victim or Vampire.  It should call the method that creates the vampire, make several calls to the  method to create a victim, and call the story method.  All this data can be hard-coded; you do not need to take user input.  However, test the application several times, both for cases in which the vampire explodes while there are living victims and for cases in which the vampire runs out of victims.
+
+Here is the output from two sample runs of my solution:
+
+Vampire has arrived in London: Dracula has consumed 0 of blood
+Dracula arises from the coffin at depth 2 meters and flies around looking for victims.
+added victim: Susie has 5000 cc of blood
+added victim: Mary has 4500 cc of blood
+added victim: Bertha has 4500 cc of blood
+added victim: Ann has 5500 cc of blood
+added victim: Morticia has 6000 cc of blood
+Night falls upon London
+Dracula attacks Susie
+Susie loses 5000 cc of blood and expires
+Dracula has consumed a total of 5000 cc of blood.
+Dracula attacks Mary
+Mary loses 4500 cc of blood and expires
+Dracula has consumed a total of 9500 cc of blood.
+Dracula attacks Bertha
+Bertha loses 4500 cc of blood and expires
+Dracula has consumed a total of 14000 cc of blood.
+Dracula attacks Ann
+Ann loses 5500 cc of blood and expires
+Dracula has consumed a total of 19500 cc of blood.
+Dracula attacks Morticia
+Morticia loses 6000 cc of blood and expires
+Dracula has consumed a total of 25500 cc of blood.
+Dracula explodes from excessive blood consumption!
+Dracula is dead.  London is safe until next semester!
+
+ 
+
+Vampire has arrived in London: Dracula has consumed 0 of blood
+Dracula arises from the coffin at depth 2 meters and flies around looking for victims.
+added victim: Susie has 5000 cc of blood
+added victim: Mary has 4500 cc of blood
+added victim: Bertha has 4500 cc of blood
+added victim: Ann has 5500 cc of blood
+Night falls upon London
+Dracula attacks Susie
+Susie loses 5000 cc of blood and expires
+Dracula has consumed a total of 5000 cc of blood.
+Dracula attacks Mary
+Mary loses 4500 cc of blood and expires
+Dracula has consumed a total of 9500 cc of blood.
+Dracula attacks Bertha
+Bertha loses 4500 cc of blood and expires
+Dracula has consumed a total of 14000 cc of blood.
+Dracula attacks Ann
+Ann loses 5500 cc of blood and expires
+Dracula has consumed a total of 19500 cc of blood.
+No remaining victims.  Time for Dracula to move on to a new city!
+
