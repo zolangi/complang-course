@@ -8,19 +8,17 @@
 import sys
 
 def main():
-    s = "abbcccddddee"
-    s1 = "aabccdee"
-    s2 = "aaabbbbc"
-    s3 = "xyyyyyyz"
-    result = []
-    result1 = []
-    result2 = []
-    result3 = []
-    print(elim_repeat(s, result))
-    print(elim_repeat(s1,result1))
-    print(elim_repeat(s2,result2))
-    print(elim_repeat(s3,result3))
-    
+    s = ['abbcccddddee', 'aabccdee', 'aaabbbbc', 'xyyyyyyz']
+    list_comp(s)
+
+def list_comp(s):
+    print('Using elim_repeat() to create a list of tuples:')
+    ltt = []
+    for ss in s:
+        result = []
+        ltt.append((ss, ''.join(elim_repeat(ss, result))))
+    print(ltt)
+       
 def elim_repeat(s,r):
     if len(s) == 0:
         r = ''.join(r)
