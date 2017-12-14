@@ -1,4 +1,5 @@
 import sys
+import random
 
 class Brain:
     #This represents one victim's brain.  It has a variable that tracks the person's IQ, which is determined by checking the value in the victim's Brain.
@@ -9,13 +10,13 @@ class Brain:
         return self.iq
 
     def __str__(self):
-        return 'IQ = ' + self.iq
+        return 'IQ = ' + str(self.iq)
 
 class Victim:
     #A Victim has a name, a Brain, and a way to track whether the person is living or dead.  The __str__ should return a string showing the victim's name and IQ.
     def __init__(self, name, Brain, status):
         self.name = name
-        self.Brain = Brain
+        self.iq = Brain.get_iq()
         self.status = status
         
     def get_name():
@@ -28,7 +29,7 @@ class Victim:
         return self.status
 
     def __str__(self):
-        return self.name +'\'s ' + self.b
+        return self.name +'\'s ' + Brain.__str__(self)
 
 class Zombie:
     #A Zombie has a name, a way to track whether or not the Zombie has been destroyed, and a feast() method.  feast() takes a Victim as its only argument (besides self).  It prints a message indicating that the Zombie has eaten the victim's brain, and it sets the person's status to dead (in this application, a dead person just dies; he or she does not become a Zombie.)
@@ -36,6 +37,12 @@ class Zombie:
         self.name = name
         self.active = active
         
+    def get_active(self):
+        return self.active
+    
+    def set_active(active):
+        self.active = active
+
     def feast(self, Victim):
         Victim.set_status('dead')
 
@@ -57,24 +64,32 @@ class HorrorStory:
         zombi3 = Zombie('Fry', 'active')
         zombi4 = Zombie('Nick', 'destroyed')
         zombi5 = Zombie('Leia', 'active')
-        zombies.append(zombi)
-        zombies.append(zombi1)
-        zombies.append(zombi2)
-        zombies.append(zombi3)
-        zombies.append(zombi4)
-        zombies.append(zombi5)
+        self.zombies.append(zombi)
+        self.zombies.append(zombi2)
+        self.zombies.append(zombi3)
+        self.zombies.append(zombi4)
+        self.zombies.append(zombi5)
         
     def create_victims(self):
-        vic = Victim('Lucy', 'alive')
-        vic2 = Victim('Mary', 'dead')
-        vic3 = Victim('Dean', 'alive')
-        vic4 = Victim('Sam', 'alive')
-        vic5 = Victim('Karen', 'dead')
-        victims.append(vic)
-        victims.append(vic2)
-        victims.append(vic3)
-        victims.append(vic4)
-        victims.append(vic5)
+        vic = Victim('Lucy', Brain(124), 'alive')
+        vic2 = Victim('Mary', Brain(131), 'dead')
+        vic3 = Victim('Dean', Brain(178), 'alive')
+        vic4 = Victim('Sam', Brain(2), 'alive')
+        vic5 = Victim('Karen', Brain(0),'dead')
+        self.victims.append(vic)
+        self.victims.append(vic2)
+        self.victims.append(vic3)
+        self.victims.append(vic4)
+        self.victims.append(vic5)
+
+    def story(self):
+        for v in self.victims:
+            for z in self.zombies:
+                if(v.get_status() == 'alive' and z.get_active() == 'active'):
+                    print('This is z=', z)
+                    print('This is v=', v)
+        
+    def fight():
         
 def main():
 #     The driver can be a top-level script; it does not need to be a class method.  It must call *only* methods in HorrorStory, not any methods in Victim or Zombie.  It should use the HorrorStory methods to add some Zombies and some Victims and then call the story method.  All this data can be hard-coded; you do not need to take user input.  However, test the application several times, and make sure that the either outcome (Zombies win or Victims win) is possible.
@@ -83,6 +98,8 @@ def main():
     
     hs.create_zombie()
     hs.create_victims()
+
+    hs.story()
     
 if __name__ =="__main__":
     sys.exit(main())

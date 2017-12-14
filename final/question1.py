@@ -29,10 +29,7 @@ def pwr(x, y):
 
 def nt(tt):
     et = [(t[0], t[1], pwr(t[0], t[1])) for t in tt ]
- return et
-
-
+    return et
 
 if __name__ == "__main__":
-
-    sys.exit(main())
+    sys.exit(main())
